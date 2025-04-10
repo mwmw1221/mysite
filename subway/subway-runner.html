@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="forest">
+<head>
+    <meta charset="UTF-8">
+    <title>Subway Runners</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <style>
+        #game_window {
+            transform: scaleY(0);
+            transition: transform 400ms ease 0ms;
+        }
+
+        #game_window.is-show {
+            transform: scaleY(1);
+            transition: transform 400ms ease 0ms;
+        }
+    </style>
+</head>
+<body>
+<div class="flex flex-col bg-base-200 m-5 p-10 rounded-xl">
+    <p class="font-bold text-3xl mb-2">Subway Runners - Wybierz wersję</p>
+    <p>Dla najlepszego (najgorszego) doświadczenia użyj komputera.</p>
+    <div class="divider"></div>
+    <div class="flex flex-row flex-wrap items-center">
+        <button class="btn mt-2" onclick="startGame('https://www.onlinegames.io/games/2022/unity/bus-subway-runner/index.html','Bus & Subway Runner')">Bus & Subway Runner</button>
+        <button class="btn mt-2" onclick="startGame('subway-runner-error.html','Subway Runner (cursed)')">Subway Runner (cursed)</button>
+        <button class="btn mt-2" onclick="startGame('https://html5.gamedistribution.com/06be3a6f9a984ac3b83db72147f5cbc4/','Endless Runner 3D')">Endless Runner 3D</button>
+        <button class="btn mt-2" onclick="startGame('https://html5.gamedistribution.com/6920e96cea7a4aea956c7410de649a98/', 'Train Surfers (UWAGA - TA GRA POSIADA REKLAMY INTERSTITIAL)')">Train Surfers</button>
+        <button class="btn mt-2" onclick="startGame('https://html5.gamedistribution.com/887b8bfe17d24d8e803f9dadaa672efc/','Teen Runner')">Teen Runner</button>
+        <button class="btn mt-2" onclick="startGame('https://html5.gamedistribution.com/a2a56f44289348b69378487db5019d29/', 'Pet Runner')">Pet Runner</button>
+        <button class="btn mt-2" onclick="startGame('https://html5.gamedistribution.com/1bf4a9e0d63b4736b2ccfee207a298d5/', 'Rail Blazers Runner')">Rail Blazers Runner</button>
+        <button class="btn mt-2" onclick="startGame('https://html5.gamedistribution.com/559dae07921c4f629fe308dc9d996041/','Rail Runner')">Rail Runner</button>
+    </div>
+</div>
+<div class="absolute left-0 top-0 w-full h-full bg-gray-600/50 backdrop-blur-md flex h-screen flex-col" id="game_window">
+    <div class="flex flex-row flex-wrap">
+        <button class="btn btn-accent m-5" onclick="stopGame()">Zamknij</button>
+        <div class="card bg-base-300/20 rounded-box grid h-10 flex-1 m-5 ml-0 place-items-center" id="game_title">Game title</div>
+    </div>
+    <iframe src="about:blank" class="w-full flex-1" id="game_frame"></iframe>
+</div>
+<script>
+    const game_window = document.getElementById('game_window');
+    const game_frame = document.getElementById('game_frame');
+    const game_title = document.getElementById('game_title');
+    function startGame(url,title){
+        game_frame.src = url;
+        game_window.classList.add('is-show');
+        game_title.innerHTML = title;
+    }
+    function stopGame() {
+        game_window.classList.remove("is-show");
+        game_frame.src = "about:blank";
+    }
+</script>
+</body>
+</html>
