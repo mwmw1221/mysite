@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deluxe Ski Jump 2</title>
+    <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
+    <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+<body>
+<button id="start" style="position: absolute; top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);" onclick="start()"><img src="icon-start.png" alt="Start game"></button>
+<img src="dsj2.png" alt="Logo DSJ2" style="position: absolute; top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+height: 200px;width: 700px;object-fit: cover; border-radius: 20px;">
+<div id="dos" style="width: 100vw; height: 100vh;"></div>
+
+<script>
+    function start() {
+    Dos(document.getElementById("dos"), {
+        url: "DSJ21p.jsdos",
+        theme: "dark",
+        softFullscreen: true,
+        autoStart: true,
+        kiosk: true,
+        backend: "dosboxX",
+        renderAspect: "16/9",
+        mouseCapture: true,
+        mouseSensitivity: 0.2
+    });
+    document.getElementById("start").style.visibility = "hidden";}
+</script>
+</body>
+</html>
